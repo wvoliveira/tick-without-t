@@ -1,0 +1,49 @@
+version: "3.7"
+
+services:
+  influxdb:
+    image: influxdb:1.7.2
+    networks:
+      - tick-net
+    ports:
+      - "8086:8086"
+    volumes:
+      - "influxdb-data:/var/lib/influxdb"
+      - "./conf/influxdb/influxdb.conf:/etc/influxdb/influxdb.conf"
+    deploy:
+      restart_policy:
+        condition: on-failure
+
+  chronograf:
+    image: chronograf:1.7.4
+    networks:
+      - tick-net
+    ports:
+      - "8888:8888"
+    env_file:
+      - ./conf/chronograf/chronograf.conf
+    volumes:
+      - "chronograf-data:/var/lib/chronograf"
+    deploy:
+      restart_policy:
+        condition: on-failure
+
+  kapacitor:
+    image: kapacitor:1.5.2
+    networks:
+      - tick-net
+    volumes:
+      - "kapacitor-data:/var/lib/kapacitor"
+      - "./conf/kapacitor/kapacitor.conf:/etc/kapacitor/kapacitor.conf"
+    deploy:
+      restart_policy:
+        condition: on-failure
+
+networks:
+  tick-net:
+    driver: overlay
+
+volumes:
+  influxdb-data:
+  chronograf-data:
+  kapacitor-data:

@@ -1,0 +1,850 @@
+{
+	"meta": {
+		"chronografVersion": "1.7.4",
+		"sources": {
+			"0": {
+				"name": "http://influxdb:8086",
+				"link": "/chronograf/v1/sources/0"
+			}
+		}
+	},
+	"dashboard": {
+		"id": 3,
+		"cells": [
+			{
+				"i": "5d1cc967-b1a4-43b3-96f6-bad455ddf674",
+				"x": 4,
+				"y": 0,
+				"w": 2,
+				"h": 2,
+				"name": "Limite de memória",
+				"queries": [
+					{
+						"query": "SELECT LAST(\"limit\")/1024/1024 FROM \"docker_metrics\".\"autogen\".\"docker_container_mem_docker\" WHERE time > :dashboardTime: AND \"com.docker.swarm.service.name\" = :service_name: AND \"host\" =~ :datacenter: GROUP BY \"com.docker.swarm.task.name\" FILL(null)",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT LAST(\"limit\")/1024/1024 FROM \"docker_metrics\".\"autogen\".\"docker_container_mem_docker\" WHERE time > :dashboardTime: AND \"com.docker.swarm.service.name\" = :service_name: AND \"host\" =~ :datacenter: GROUP BY \"com.docker.swarm.task.name\" FILL(null)",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": " MB",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "single-stat",
+				"colors": [
+					{
+						"id": "base",
+						"type": "text",
+						"hex": "#00C9FF",
+						"name": "laser",
+						"value": "-1000000000000000000"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"note": "",
+				"noteVisibility": "default",
+				"links": {
+					"self": "/chronograf/v1/dashboards/3/cells/5d1cc967-b1a4-43b3-96f6-bad455ddf674"
+				}
+			},
+			{
+				"i": "bda29f5d-1228-4817-9666-6e63d6999e21",
+				"x": 6,
+				"y": 0,
+				"w": 2,
+				"h": 2,
+				"name": "Média de uso de CPU",
+				"queries": [
+					{
+						"query": "SELECT MEAN(\"usage_percent\") FROM \"docker_metrics\".\"autogen\".\"docker_container_cpu_docker\" WHERE time > :dashboardTime: AND \"com.docker.swarm.service.name\" = :service_name: AND \"host\" =~ :datacenter: GROUP BY \"com.docker.swarm.task.name\" FILL(null)",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT MEAN(\"usage_percent\") FROM \"docker_metrics\".\"autogen\".\"docker_container_cpu_docker\" WHERE time > :dashboardTime: AND \"com.docker.swarm.service.name\" = :service_name: AND \"host\" =~ :datacenter: GROUP BY \"com.docker.swarm.task.name\" FILL(null)",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": " %",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "single-stat",
+				"colors": [
+					{
+						"id": "base",
+						"type": "text",
+						"hex": "#00C9FF",
+						"name": "laser",
+						"value": "-1000000000000000000"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"note": "",
+				"noteVisibility": "default",
+				"links": {
+					"self": "/chronograf/v1/dashboards/3/cells/bda29f5d-1228-4817-9666-6e63d6999e21"
+				}
+			},
+			{
+				"i": "3fadd8b0-f0c2-4158-b369-86fce225501b",
+				"x": 2,
+				"y": 0,
+				"w": 2,
+				"h": 2,
+				"name": "Média de uso de memória",
+				"queries": [
+					{
+						"query": "SELECT MEAN(\"usage\")/1024/1024 FROM \"docker_metrics\".\"autogen\".\"docker_container_mem_docker\" WHERE time > :dashboardTime: AND \"com.docker.swarm.service.name\" = :service_name: AND \"host\" =~ :datacenter: GROUP BY \"com.docker.swarm.task.name\" FILL(null)",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT MEAN(\"usage\")/1024/1024 FROM \"docker_metrics\".\"autogen\".\"docker_container_mem_docker\" WHERE time > :dashboardTime: AND \"com.docker.swarm.service.name\" = :service_name: AND \"host\" =~ :datacenter: GROUP BY \"com.docker.swarm.task.name\" FILL(null)",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": " MB",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "single-stat",
+				"colors": [
+					{
+						"id": "base",
+						"type": "text",
+						"hex": "#00C9FF",
+						"name": "laser",
+						"value": "-1000000000000000000"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"note": "",
+				"noteVisibility": "default",
+				"links": {
+					"self": "/chronograf/v1/dashboards/3/cells/3fadd8b0-f0c2-4158-b369-86fce225501b"
+				}
+			},
+			{
+				"i": "a6bf3866-9e05-4141-a567-a8ca32cf367f",
+				"x": 0,
+				"y": 2,
+				"w": 6,
+				"h": 3,
+				"name": "Uso de memória por task",
+				"queries": [
+					{
+						"query": "SELECT mean(\"usage\") AS \"mean_usage\" FROM \"docker_metrics\".\"autogen\".\"docker_container_mem_docker\" WHERE time > :dashboardTime: AND \"com.docker.swarm.service.name\" = :service_name: AND \"host\" =~ :datacenter: GROUP BY time(:interval:), \"com.docker.swarm.task.name\" FILL(null)",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT mean(\"usage\") AS \"mean_usage\" FROM \"docker_metrics\".\"autogen\".\"docker_container_mem_docker\" WHERE time > :dashboardTime: AND \"com.docker.swarm.service.name\" = :service_name: AND \"host\" =~ :datacenter: GROUP BY time(:interval:), \"com.docker.swarm.task.name\" FILL(null)",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "2",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "line-stepplot",
+				"colors": [
+					{
+						"id": "2262ef70-c484-4194-b467-025d0caba623",
+						"type": "scale",
+						"hex": "#31C0F6",
+						"name": "Nineteen Eighty Four",
+						"value": "0"
+					},
+					{
+						"id": "479f92a6-83e6-4f17-9b4f-fe515275a85d",
+						"type": "scale",
+						"hex": "#A500A5",
+						"name": "Nineteen Eighty Four",
+						"value": "0"
+					},
+					{
+						"id": "0e345bcf-a8e4-4c07-b081-a1a73b9aa94b",
+						"type": "scale",
+						"hex": "#FF7E27",
+						"name": "Nineteen Eighty Four",
+						"value": "0"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"note": "",
+				"noteVisibility": "default",
+				"links": {
+					"self": "/chronograf/v1/dashboards/3/cells/a6bf3866-9e05-4141-a567-a8ca32cf367f"
+				}
+			},
+			{
+				"i": "eb0d678a-1a98-4405-bbfc-f3f9243a404b",
+				"x": 6,
+				"y": 2,
+				"w": 6,
+				"h": 3,
+				"name": "Uso de CPU por task",
+				"queries": [
+					{
+						"query": "SELECT mean(\"usage_percent\") FROM \"docker_metrics\".\"autogen\".\"docker_container_cpu_docker\" WHERE time > :dashboardTime: AND \"com.docker.swarm.service.name\" = :service_name: AND \"host\" =~ :datacenter: GROUP BY time(:interval:), \"com.docker.swarm.task.name\" FILL(null)",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT mean(\"usage_percent\") FROM \"docker_metrics\".\"autogen\".\"docker_container_cpu_docker\" WHERE time > :dashboardTime: AND \"com.docker.swarm.service.name\" = :service_name: AND \"host\" =~ :datacenter: GROUP BY time(:interval:), \"com.docker.swarm.task.name\" FILL(null)",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": " %",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "line-stepplot",
+				"colors": [
+					{
+						"id": "base",
+						"type": "scale",
+						"hex": "#FDC44F",
+						"name": "Cthulhu",
+						"value": "0"
+					},
+					{
+						"id": "d47ed0a3-bc9a-4b0e-ba3a-80f554650f34",
+						"type": "scale",
+						"hex": "#007C76",
+						"name": "Cthulhu",
+						"value": "0"
+					},
+					{
+						"id": "3061820e-3bdb-42c7-bce0-c639daf4e5a6",
+						"type": "scale",
+						"hex": "#8983FF",
+						"name": "Cthulhu",
+						"value": "0"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					{
+						"internalName": "docker_container_cpu_docker.mean_usage_total",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": false,
+					"digits": 3
+				},
+				"note": "",
+				"noteVisibility": "default",
+				"links": {
+					"self": "/chronograf/v1/dashboards/3/cells/eb0d678a-1a98-4405-bbfc-f3f9243a404b"
+				}
+			},
+			{
+				"i": "4c59febf-0504-47cf-9ff7-5c7a8df6564f",
+				"x": 0,
+				"y": 5,
+				"w": 6,
+				"h": 3,
+				"name": "Net: transmit and receive",
+				"queries": [
+					{
+						"query": "SELECT mean(\"tx_packets\") AS \"Transmit\", mean(\"tx_errors\") AS \"Transmit errors\", mean(\"rx_packets\") AS \"Receive\", mean(\"rx_errors\") AS \"Receive errors\" FROM \"docker_metrics\".\"autogen\".\"docker_container_net_docker\" WHERE time > :dashboardTime: AND \"com.docker.swarm.service.name\" = :service_name: AND \"host\" =~ :datacenter: GROUP BY time(:interval:) FILL(null)",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT mean(\"tx_packets\") AS \"Transmit\", mean(\"tx_errors\") AS \"Transmit errors\", mean(\"rx_packets\") AS \"Receive\", mean(\"rx_errors\") AS \"Receive errors\" FROM \"docker_metrics\".\"autogen\".\"docker_container_net_docker\" WHERE time > :dashboardTime: AND \"com.docker.swarm.service.name\" = :service_name: AND \"host\" =~ :datacenter: GROUP BY time(:interval:) FILL(null)",
+							"range": null,
+							"shifts": null
+						},
+						"source": "/chronograf/v1/sources/0",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "2",
+						"scale": "log"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "line-stacked",
+				"colors": [
+					{
+						"id": "a13b4a3f-de6a-4f0d-bd58-0cd2d615eb5a",
+						"type": "scale",
+						"hex": "#FDC44F",
+						"name": "Cthulhu",
+						"value": "0"
+					},
+					{
+						"id": "c86a21e3-900a-4778-bc3a-9e6769722042",
+						"type": "scale",
+						"hex": "#007C76",
+						"name": "Cthulhu",
+						"value": "0"
+					},
+					{
+						"id": "8f263ee7-94ff-4578-9b50-9541a13a1e47",
+						"type": "scale",
+						"hex": "#8983FF",
+						"name": "Cthulhu",
+						"value": "0"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"note": "",
+				"noteVisibility": "default",
+				"links": {
+					"self": "/chronograf/v1/dashboards/3/cells/4c59febf-0504-47cf-9ff7-5c7a8df6564f"
+				}
+			},
+			{
+				"i": "c3880eb4-3a7a-4e4f-bb38-48f57ac97a49",
+				"x": 0,
+				"y": 0,
+				"w": 2,
+				"h": 2,
+				"name": "Replicas",
+				"queries": [
+					{
+						"query": "SELECT COUNT(DISTINCT(\"com.docker.swarm.task.name\")) FROM (SELECT MEAN(\"usage\") FROM \"docker_metrics\".\"autogen\".\"docker_container_mem_docker\" WHERE time > :dashboardTime: AND \"com.docker.swarm.service.name\" = :service_name: AND \"host\" =~ :datacenter: GROUP BY time(:interval:), \"com.docker.swarm.task.name\" FILL(null))",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT COUNT(DISTINCT(\"com.docker.swarm.task.name\")) FROM (SELECT MEAN(\"usage\") FROM \"docker_metrics\".\"autogen\".\"docker_container_mem_docker\" WHERE time > :dashboardTime: AND \"com.docker.swarm.service.name\" = :service_name: AND \"host\" =~ :datacenter: GROUP BY time(:interval:), \"com.docker.swarm.task.name\" FILL(null))",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "2",
+						"scale": "log"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "single-stat",
+				"colors": [
+					{
+						"id": "base",
+						"type": "text",
+						"hex": "#00C9FF",
+						"name": "laser",
+						"value": "-1000000000000000000"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					{
+						"internalName": "docker_container_mem_docker.count",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"note": "",
+				"noteVisibility": "default",
+				"links": {
+					"self": "/chronograf/v1/dashboards/3/cells/c3880eb4-3a7a-4e4f-bb38-48f57ac97a49"
+				}
+			}
+		],
+		"templates": [
+			{
+				"tempVar": ":service_name:",
+				"values": [
+					{
+						"value": "app-alert-manager-production",
+						"type": "tagValue",
+						"selected": true
+					}
+				],
+				"id": "93835d4b-7fa3-42dc-b5f9-a244ef8fa0c1",
+				"type": "tagValues",
+				"label": "",
+				"query": {
+					"influxql": "SHOW TAG VALUES ON :database: FROM :measurement: WITH KEY=:tagKey:",
+					"db": "docker_metrics",
+					"measurement": "docker_container_mem_docker",
+					"tagKey": "com.docker.swarm.service.name",
+					"fieldKey": ""
+				},
+				"links": {
+					"self": "/chronograf/v1/dashboards/3/templates/93835d4b-7fa3-42dc-b5f9-a244ef8fa0c1"
+				}
+			},
+			{
+				"tempVar": ":datacenter:",
+				"values": [
+					{
+						"value": "/.*vm-tmb-swarm-worker.*/",
+						"type": "map",
+						"selected": true,
+						"key": "tambore"
+					},
+					{
+						"value": "/.*aws-swarm-worker.*/",
+						"type": "map",
+						"selected": false,
+						"key": "aws"
+					}
+				],
+				"id": "d4e06893-1633-4277-a91d-514d24d08030",
+				"type": "map",
+				"label": "",
+				"query": {
+					"influxql": "",
+					"measurement": "",
+					"tagKey": "",
+					"fieldKey": ""
+				},
+				"links": {
+					"self": "/chronograf/v1/dashboards/3/templates/d4e06893-1633-4277-a91d-514d24d08030"
+				}
+			}
+		],
+		"name": "Docker services",
+		"organization": "default",
+		"links": {
+			"self": "/chronograf/v1/dashboards/3",
+			"cells": "/chronograf/v1/dashboards/3/cells",
+			"templates": "/chronograf/v1/dashboards/3/templates"
+		}
+	}
+}

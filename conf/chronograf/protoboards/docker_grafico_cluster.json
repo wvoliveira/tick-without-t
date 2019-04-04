@@ -1,0 +1,1802 @@
+{
+	"meta": {
+		"chronografVersion": "1.7.4",
+		"sources": {
+			"0": {
+				"name": "http://influxdb:8086",
+				"link": "/chronograf/v1/sources/0"
+			}
+		}
+	},
+	"dashboard": {
+		"id": 6,
+		"cells": [
+			{
+				"i": "cf85ead9-1939-4b5f-b2a4-615ed0a50bad",
+				"x": 9,
+				"y": 0,
+				"w": 3,
+				"h": 2,
+				"name": "RAM livre",
+				"queries": [
+					{
+						"query": "SELECT SUM(\"last\") FROM (SELECT last(\"free\")/1024/1024/1024 FROM \"vm_metrics\".\"autogen\".\"mem_vm\" WHERE \"host\" =~ :hosts: AND time > :dashboardTime: GROUP BY \"host\" FILL(previous))",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT SUM(\"last\") FROM (SELECT last(\"free\")/1024/1024/1024 FROM \"vm_metrics\".\"autogen\".\"mem_vm\" WHERE \"host\" =~ :hosts: AND time > :dashboardTime: GROUP BY \"host\" FILL(previous))",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"0",
+							""
+						],
+						"label": "Containters",
+						"prefix": "",
+						"suffix": " GB",
+						"base": "2",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "single-stat",
+				"colors": [
+					{
+						"id": "base",
+						"type": "text",
+						"hex": "#00C9FF",
+						"name": "laser",
+						"value": "-1000000000000000000"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					{
+						"internalName": "docker_docker.sum",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 0
+				},
+				"note": "To enable this graph, you will need to configure the [Telegraf Docker Input plugin](https://github.com/influxdata/telegraf/tree/master/plugins/inputs/docker).",
+				"noteVisibility": "showWhenNoData",
+				"links": {
+					"self": "/chronograf/v1/dashboards/6/cells/cf85ead9-1939-4b5f-b2a4-615ed0a50bad"
+				}
+			},
+			{
+				"i": "5603c49b-a934-4355-b06c-010d5357b624",
+				"x": 0,
+				"y": 0,
+				"w": 2,
+				"h": 2,
+				"name": "CPUs",
+				"queries": [
+					{
+						"query": "SELECT SUM(\"last\") FROM (SELECT LAST(\"n_cpus\") FROM \"docker_metrics\".\"autogen\".\"docker_docker\" WHERE \"engine_host\" =~ :hosts: AND time > :dashboardTime: GROUP BY \"engine_host\" FILL(previous))",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT SUM(\"last\") FROM (SELECT LAST(\"n_cpus\") FROM \"docker_metrics\".\"autogen\".\"docker_docker\" WHERE \"engine_host\" =~ :hosts: AND time > :dashboardTime: GROUP BY \"engine_host\" FILL(previous))",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"0",
+							""
+						],
+						"label": "Containters",
+						"prefix": "",
+						"suffix": "",
+						"base": "2",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "single-stat",
+				"colors": [
+					{
+						"id": "base",
+						"type": "text",
+						"hex": "#00C9FF",
+						"name": "laser",
+						"value": "-1000000000000000000"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					{
+						"internalName": "docker_docker.sum",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 0
+				},
+				"note": "To enable this graph, you will need to configure the [Telegraf Docker Input plugin](https://github.com/influxdata/telegraf/tree/master/plugins/inputs/docker).",
+				"noteVisibility": "showWhenNoData",
+				"links": {
+					"self": "/chronograf/v1/dashboards/6/cells/5603c49b-a934-4355-b06c-010d5357b624"
+				}
+			},
+			{
+				"i": "5b01509a-d8fa-4585-9410-25af9bf32efb",
+				"x": 0,
+				"y": 8,
+				"w": 12,
+				"h": 2,
+				"name": "Block I/O per Container",
+				"queries": [
+					{
+						"query": "SELECT \"io_service_bytes_recursive_write\", \"io_service_bytes_recursive_read\" FROM \"docker_metrics\".\"autogen\".\"docker_container_blkio_docker\" WHERE \"engine_host\" =~ :hosts: AND time > :dashboardTime: GROUP BY \"engine_host\", \"container_name\" FILL(null)",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT \"io_service_bytes_recursive_write\", \"io_service_bytes_recursive_read\" FROM \"docker_metrics\".\"autogen\".\"docker_container_blkio_docker\" WHERE \"engine_host\" =~ :hosts: AND time > :dashboardTime: GROUP BY \"engine_host\", \"container_name\" FILL(null)",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "Container I/O",
+						"prefix": "",
+						"suffix": "",
+						"base": "2",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "line",
+				"colors": [
+					{
+						"id": "ec8bb6e2-21f0-4c3a-a328-98948911eaee",
+						"type": "scale",
+						"hex": "#FDC44F",
+						"name": "Cthulhu",
+						"value": "0"
+					},
+					{
+						"id": "d47ed0a3-bc9a-4b0e-ba3a-80f554650f34",
+						"type": "scale",
+						"hex": "#007C76",
+						"name": "Cthulhu",
+						"value": "0"
+					},
+					{
+						"id": "3061820e-3bdb-42c7-bce0-c639daf4e5a6",
+						"type": "scale",
+						"hex": "#8983FF",
+						"name": "Cthulhu",
+						"value": "0"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"note": "To enable this graph, you will need to configure the [Telegraf Docker Input plugin](https://github.com/influxdata/telegraf/tree/master/plugins/inputs/docker).",
+				"noteVisibility": "showWhenNoData",
+				"links": {
+					"self": "/chronograf/v1/dashboards/6/cells/5b01509a-d8fa-4585-9410-25af9bf32efb"
+				}
+			},
+			{
+				"i": "e4b8acbb-0c8a-466f-8a43-43445250ebdb",
+				"x": 0,
+				"y": 6,
+				"w": 12,
+				"h": 2,
+				"name": "System Load",
+				"queries": [
+					{
+						"query": "SELECT \"load1\", \"load5\", \"load15\" FROM \"vm_metrics\".\"autogen\".\"system_vm\" WHERE time > :dashboardTime: AND \"host\" =~ :hosts: GROUP BY \"host\" FILL(null)",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT \"load1\", \"load5\", \"load15\" FROM \"vm_metrics\".\"autogen\".\"system_vm\" WHERE time > :dashboardTime: AND \"host\" =~ :hosts: GROUP BY \"host\" FILL(null)",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "Load",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "line",
+				"colors": [
+					{
+						"id": "ec8bb6e2-21f0-4c3a-a328-98948911eaee",
+						"type": "scale",
+						"hex": "#FDC44F",
+						"name": "Cthulhu",
+						"value": "0"
+					},
+					{
+						"id": "d47ed0a3-bc9a-4b0e-ba3a-80f554650f34",
+						"type": "scale",
+						"hex": "#007C76",
+						"name": "Cthulhu",
+						"value": "0"
+					},
+					{
+						"id": "3061820e-3bdb-42c7-bce0-c639daf4e5a6",
+						"type": "scale",
+						"hex": "#8983FF",
+						"name": "Cthulhu",
+						"value": "0"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"note": "To enable this graph, you will need to configure the [Telegraf System Input plugin](https://github.com/influxdata/telegraf/tree/master/plugins/inputs/system).",
+				"noteVisibility": "showWhenNoData",
+				"links": {
+					"self": "/chronograf/v1/dashboards/6/cells/e4b8acbb-0c8a-466f-8a43-43445250ebdb"
+				}
+			},
+			{
+				"i": "2036b84e-df97-4dea-b5ec-29f1c47f8de2",
+				"x": 0,
+				"y": 4,
+				"w": 12,
+				"h": 2,
+				"name": "Memory Usage",
+				"queries": [
+					{
+						"query": "SELECT \"used_percent\" FROM \"vm_metrics\".\"autogen\".\"mem_vm\" WHERE time > :dashboardTime: AND \"host\" =~ :hosts: GROUP BY \"host\" FILL(previous)",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT \"used_percent\" FROM \"vm_metrics\".\"autogen\".\"mem_vm\" WHERE time > :dashboardTime: AND \"host\" =~ :hosts: GROUP BY \"host\" FILL(previous)",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "Memory used %",
+						"prefix": "",
+						"suffix": " %",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "line-plus-single-stat",
+				"colors": [
+					{
+						"id": "base",
+						"type": "scale",
+						"hex": "#FDC44F",
+						"name": "Cthulhu",
+						"value": "0"
+					},
+					{
+						"id": "d47ed0a3-bc9a-4b0e-ba3a-80f554650f34",
+						"type": "scale",
+						"hex": "#007C76",
+						"name": "Cthulhu",
+						"value": "0"
+					},
+					{
+						"id": "3061820e-3bdb-42c7-bce0-c639daf4e5a6",
+						"type": "scale",
+						"hex": "#8983FF",
+						"name": "Cthulhu",
+						"value": "0"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 0
+				},
+				"note": "To enable this graph, you will need to configure the [Telegraf Mem Input plugin](https://github.com/influxdata/telegraf/tree/master/plugins/inputs/mem).",
+				"noteVisibility": "showWhenNoData",
+				"links": {
+					"self": "/chronograf/v1/dashboards/6/cells/2036b84e-df97-4dea-b5ec-29f1c47f8de2"
+				}
+			},
+			{
+				"i": "747d049a-c6ce-4260-8925-3a4cea18e280",
+				"x": 0,
+				"y": 2,
+				"w": 12,
+				"h": 2,
+				"name": "CPU Usage",
+				"queries": [
+					{
+						"query": "SELECT \"usage_system\", \"usage_user\" FROM \"vm_metrics\".\"autogen\".\"cpu_vm\" WHERE \"host\" =~ :hosts: AND time > :dashboardTime: GROUP BY \"host\" FILL(previous)",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT \"usage_system\", \"usage_user\" FROM \"vm_metrics\".\"autogen\".\"cpu_vm\" WHERE \"host\" =~ :hosts: AND time > :dashboardTime: GROUP BY \"host\" FILL(previous)",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "CPU usage",
+						"prefix": "",
+						"suffix": " %",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "line-stepplot",
+				"colors": [
+					{
+						"id": "ec8bb6e2-21f0-4c3a-a328-98948911eaee",
+						"type": "scale",
+						"hex": "#FDC44F",
+						"name": "Cthulhu",
+						"value": "0"
+					},
+					{
+						"id": "d47ed0a3-bc9a-4b0e-ba3a-80f554650f34",
+						"type": "scale",
+						"hex": "#007C76",
+						"name": "Cthulhu",
+						"value": "0"
+					},
+					{
+						"id": "3061820e-3bdb-42c7-bce0-c639daf4e5a6",
+						"type": "scale",
+						"hex": "#8983FF",
+						"name": "Cthulhu",
+						"value": "0"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					{
+						"internalName": "cpu_vm.usage_idle",
+						"displayName": "",
+						"visible": true
+					},
+					{
+						"internalName": "cpu_vm.usage_iowait",
+						"displayName": "",
+						"visible": true
+					},
+					{
+						"internalName": "cpu_vm.usage_system",
+						"displayName": "",
+						"visible": true
+					},
+					{
+						"internalName": "cpu_vm.usage_user",
+						"displayName": "",
+						"visible": true
+					},
+					{
+						"internalName": "host",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"note": "To enable this graph, you will need to configure the [Telegraf CPU Input plugin](https://github.com/influxdata/telegraf/tree/master/plugins/inputs/cpu).",
+				"noteVisibility": "showWhenNoData",
+				"links": {
+					"self": "/chronograf/v1/dashboards/6/cells/747d049a-c6ce-4260-8925-3a4cea18e280"
+				}
+			},
+			{
+				"i": "3f75466c-6569-4d58-afea-7a780e4f9ea5",
+				"x": 0,
+				"y": 10,
+				"w": 12,
+				"h": 2,
+				"name": "Disk I/O",
+				"queries": [
+					{
+						"query": "SELECT non_negative_derivative(max(\"read_bytes\"),1s) AS \"read bytes\", non_negative_derivative(max(\"write_bytes\"),1s) AS \"write bytes\" FROM \"vm_metrics\".\"autogen\".\"diskio_vm\" WHERE time > :dashboardTime: AND \"host\" =~ :hosts: GROUP BY \"host\", time(:interval:) FILL(null)",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT non_negative_derivative(max(\"read_bytes\"),1s) AS \"read bytes\", non_negative_derivative(max(\"write_bytes\"),1s) AS \"write bytes\" FROM \"vm_metrics\".\"autogen\".\"diskio_vm\" WHERE time > :dashboardTime: AND \"host\" =~ :hosts: GROUP BY \"host\", time(:interval:) FILL(null)",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "bytes/sec",
+						"prefix": "",
+						"suffix": "",
+						"base": "2",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "line",
+				"colors": [
+					{
+						"id": "ec8bb6e2-21f0-4c3a-a328-98948911eaee",
+						"type": "scale",
+						"hex": "#FDC44F",
+						"name": "Cthulhu",
+						"value": "0"
+					},
+					{
+						"id": "d47ed0a3-bc9a-4b0e-ba3a-80f554650f34",
+						"type": "scale",
+						"hex": "#007C76",
+						"name": "Cthulhu",
+						"value": "0"
+					},
+					{
+						"id": "3061820e-3bdb-42c7-bce0-c639daf4e5a6",
+						"type": "scale",
+						"hex": "#8983FF",
+						"name": "Cthulhu",
+						"value": "0"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"note": "To enable this graph, you will need to configure the [Telegraf DiskIO Input plugin](https://github.com/influxdata/telegraf/tree/master/plugins/inputs/diskio).",
+				"noteVisibility": "showWhenNoData",
+				"links": {
+					"self": "/chronograf/v1/dashboards/6/cells/3f75466c-6569-4d58-afea-7a780e4f9ea5"
+				}
+			},
+			{
+				"i": "bd59fcde-0401-4b9a-aefb-22712413113c",
+				"x": 0,
+				"y": 18,
+				"w": 12,
+				"h": 2,
+				"name": "Memory usage % per container",
+				"queries": [
+					{
+						"query": "SELECT \"usage_percent\" FROM \"docker_metrics\".\"autogen\".\"docker_container_mem_docker\" WHERE \"engine_host\" =~ :hosts: and time > :dashboardTime: GROUP BY \"engine_host\", \"container_name\" FILL(null)",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT \"usage_percent\" FROM \"docker_metrics\".\"autogen\".\"docker_container_mem_docker\" WHERE \"engine_host\" =~ :hosts: and time > :dashboardTime: GROUP BY \"engine_host\", \"container_name\" FILL(null)",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"0",
+							"100"
+						],
+						"label": "Memory usage %",
+						"prefix": "",
+						"suffix": " %",
+						"base": "2",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "line",
+				"colors": [
+					{
+						"id": "a7a38809-10a1-4e4d-a99a-fc05d676d375",
+						"type": "scale",
+						"hex": "#FDC44F",
+						"name": "Cthulhu",
+						"value": "0"
+					},
+					{
+						"id": "3dd1ce6c-e305-4a41-aa36-e3db28500dce",
+						"type": "scale",
+						"hex": "#007C76",
+						"name": "Cthulhu",
+						"value": "0"
+					},
+					{
+						"id": "10688960-fcdc-4413-aa60-4f494e2cfea3",
+						"type": "scale",
+						"hex": "#8983FF",
+						"name": "Cthulhu",
+						"value": "0"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"note": "To enable this graph, you will need to configure the [Telegraf Docker Input plugin](https://github.com/influxdata/telegraf/tree/master/plugins/inputs/docker).",
+				"noteVisibility": "showWhenNoData",
+				"links": {
+					"self": "/chronograf/v1/dashboards/6/cells/bd59fcde-0401-4b9a-aefb-22712413113c"
+				}
+			},
+			{
+				"i": "f6521bff-5f4f-4b81-ac42-d7bdc07ea7dd",
+				"x": 2,
+				"y": 0,
+				"w": 2,
+				"h": 2,
+				"name": "Containers total",
+				"queries": [
+					{
+						"query": "SELECT SUM(\"last\") FROM (SELECT last(\"n_containers\") FROM \"docker_metrics\".\"autogen\".\"docker_docker\" WHERE \"engine_host\" =~ :hosts: AND time > :dashboardTime: GROUP BY \"engine_host\" FILL(previous))",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT SUM(\"last\") FROM (SELECT last(\"n_containers\") FROM \"docker_metrics\".\"autogen\".\"docker_docker\" WHERE \"engine_host\" =~ :hosts: AND time > :dashboardTime: GROUP BY \"engine_host\" FILL(previous))",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"0",
+							""
+						],
+						"label": "Containters",
+						"prefix": "",
+						"suffix": "",
+						"base": "2",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "single-stat",
+				"colors": [
+					{
+						"id": "base",
+						"type": "text",
+						"hex": "#00C9FF",
+						"name": "laser",
+						"value": "-1000000000000000000"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					{
+						"internalName": "docker_docker.sum",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 0
+				},
+				"note": "To enable this graph, you will need to configure the [Telegraf Docker Input plugin](https://github.com/influxdata/telegraf/tree/master/plugins/inputs/docker).",
+				"noteVisibility": "showWhenNoData",
+				"links": {
+					"self": "/chronograf/v1/dashboards/6/cells/f6521bff-5f4f-4b81-ac42-d7bdc07ea7dd"
+				}
+			},
+			{
+				"i": "6c4537e4-a62f-4705-949e-ab80d2644be8",
+				"x": 6,
+				"y": 0,
+				"w": 3,
+				"h": 2,
+				"name": "RAM total",
+				"queries": [
+					{
+						"query": "SELECT SUM(\"last\") FROM (SELECT last(\"total\")/1024/1024/1024 FROM \"vm_metrics\".\"autogen\".\"mem_vm\" WHERE \"host\" =~ :hosts: AND time > :dashboardTime: GROUP BY \"host\" FILL(previous))",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT SUM(\"last\") FROM (SELECT last(\"total\")/1024/1024/1024 FROM \"vm_metrics\".\"autogen\".\"mem_vm\" WHERE \"host\" =~ :hosts: AND time > :dashboardTime: GROUP BY \"host\" FILL(previous))",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"0",
+							""
+						],
+						"label": "Containters",
+						"prefix": "",
+						"suffix": " GB",
+						"base": "2",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "single-stat",
+				"colors": [
+					{
+						"id": "base",
+						"type": "text",
+						"hex": "#00C9FF",
+						"name": "laser",
+						"value": "-1000000000000000000"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					{
+						"internalName": "docker_docker.sum",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 0
+				},
+				"note": "To enable this graph, you will need to configure the [Telegraf Docker Input plugin](https://github.com/influxdata/telegraf/tree/master/plugins/inputs/docker).",
+				"noteVisibility": "showWhenNoData",
+				"links": {
+					"self": "/chronograf/v1/dashboards/6/cells/6c4537e4-a62f-4705-949e-ab80d2644be8"
+				}
+			},
+			{
+				"i": "b473388f-e4d6-4836-bf99-4453d68201fb",
+				"x": 4,
+				"y": 0,
+				"w": 2,
+				"h": 2,
+				"name": "Running containers",
+				"queries": [
+					{
+						"query": "SELECT SUM(\"last\") FROM (SELECT LAST(\"n_containers_running\") FROM \"docker_metrics\".\"autogen\".\"docker_docker\" WHERE \"engine_host\" =~ :hosts: AND time > :dashboardTime: GROUP BY \"engine_host\" FILL(previous))",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT SUM(\"last\") FROM (SELECT LAST(\"n_containers_running\") FROM \"docker_metrics\".\"autogen\".\"docker_docker\" WHERE \"engine_host\" =~ :hosts: AND time > :dashboardTime: GROUP BY \"engine_host\" FILL(previous))",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"0",
+							""
+						],
+						"label": "Containters",
+						"prefix": "",
+						"suffix": "",
+						"base": "2",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "single-stat",
+				"colors": [
+					{
+						"id": "base",
+						"type": "text",
+						"hex": "#00C9FF",
+						"name": "laser",
+						"value": "-1000000000000000000"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					{
+						"internalName": "docker_docker.sum",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": false,
+					"digits": 2
+				},
+				"note": "To enable this graph, you will need to configure the [Telegraf Docker Input plugin](https://github.com/influxdata/telegraf/tree/master/plugins/inputs/docker).",
+				"noteVisibility": "showWhenNoData",
+				"links": {
+					"self": "/chronograf/v1/dashboards/6/cells/b473388f-e4d6-4836-bf99-4453d68201fb"
+				}
+			},
+			{
+				"i": "0a185e73-11c2-43d8-9d2c-36e417293b5c",
+				"x": 0,
+				"y": 20,
+				"w": 12,
+				"h": 2,
+				"name": "Net I/O per Container",
+				"queries": [
+					{
+						"query": "SELECT \"rx_bytes\", \"tx_bytes\" FROM \"docker_metrics\".\"autogen\".\"docker_container_net_docker\" WHERE \"engine_host\" =~ :hosts: AND time > :dashboardTime: GROUP BY \"engine_host\", \"container_name\" FILL(null)",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT \"rx_bytes\", \"tx_bytes\" FROM \"docker_metrics\".\"autogen\".\"docker_container_net_docker\" WHERE \"engine_host\" =~ :hosts: AND time > :dashboardTime: GROUP BY \"engine_host\", \"container_name\" FILL(null)",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "2",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "line",
+				"colors": [
+					{
+						"id": "ec8bb6e2-21f0-4c3a-a328-98948911eaee",
+						"type": "scale",
+						"hex": "#FDC44F",
+						"name": "Cthulhu",
+						"value": "0"
+					},
+					{
+						"id": "d47ed0a3-bc9a-4b0e-ba3a-80f554650f34",
+						"type": "scale",
+						"hex": "#007C76",
+						"name": "Cthulhu",
+						"value": "0"
+					},
+					{
+						"id": "3061820e-3bdb-42c7-bce0-c639daf4e5a6",
+						"type": "scale",
+						"hex": "#8983FF",
+						"name": "Cthulhu",
+						"value": "0"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"note": "To enable this graph, you will need to configure the [Telegraf Docker Input plugin](https://github.com/influxdata/telegraf/tree/master/plugins/inputs/docker).",
+				"noteVisibility": "showWhenNoData",
+				"links": {
+					"self": "/chronograf/v1/dashboards/6/cells/0a185e73-11c2-43d8-9d2c-36e417293b5c"
+				}
+			},
+			{
+				"i": "e918bb9b-bbf2-480f-b1ab-81b20fb4ab4e",
+				"x": 0,
+				"y": 14,
+				"w": 12,
+				"h": 2,
+				"name": "CPU Usage per Container",
+				"queries": [
+					{
+						"query": "SELECT \"usage_percent\" FROM \"docker_metrics\".\"autogen\".\"docker_container_cpu_docker\" WHERE \"engine_host\" =~ :hosts: AND time > :dashboardTime: AND \"cpu\"='cpu-total' GROUP BY \"engine_host\", \"container_name\" FILL(null)",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT \"usage_percent\" FROM \"docker_metrics\".\"autogen\".\"docker_container_cpu_docker\" WHERE \"engine_host\" =~ :hosts: AND time > :dashboardTime: AND \"cpu\"='cpu-total' GROUP BY \"engine_host\", \"container_name\" FILL(null)",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"0",
+							""
+						],
+						"label": "CPU usage",
+						"prefix": "",
+						"suffix": "%",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "line",
+				"colors": [
+					{
+						"id": "ec8bb6e2-21f0-4c3a-a328-98948911eaee",
+						"type": "scale",
+						"hex": "#FDC44F",
+						"name": "Cthulhu",
+						"value": "0"
+					},
+					{
+						"id": "d47ed0a3-bc9a-4b0e-ba3a-80f554650f34",
+						"type": "scale",
+						"hex": "#007C76",
+						"name": "Cthulhu",
+						"value": "0"
+					},
+					{
+						"id": "3061820e-3bdb-42c7-bce0-c639daf4e5a6",
+						"type": "scale",
+						"hex": "#8983FF",
+						"name": "Cthulhu",
+						"value": "0"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"note": "To enable this graph, you will need to configure the [Telegraf Docker Input plugin](https://github.com/influxdata/telegraf/tree/master/plugins/inputs/docker).",
+				"noteVisibility": "showWhenNoData",
+				"links": {
+					"self": "/chronograf/v1/dashboards/6/cells/e918bb9b-bbf2-480f-b1ab-81b20fb4ab4e"
+				}
+			},
+			{
+				"i": "d1e12f60-e657-4bd8-b946-17df89447779",
+				"x": 0,
+				"y": 16,
+				"w": 12,
+				"h": 2,
+				"name": "Memory Usage per Container ",
+				"queries": [
+					{
+						"query": "SELECT \"usage\" FROM \"docker_metrics\".\"autogen\".\"docker_container_mem_docker\" WHERE \"engine_host\" =~ :hosts: and time > :dashboardTime: GROUP BY \"engine_host\", container_name FILL(null)",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT \"usage\" FROM \"docker_metrics\".\"autogen\".\"docker_container_mem_docker\" WHERE \"engine_host\" =~ :hosts: and time > :dashboardTime: GROUP BY \"engine_host\", container_name FILL(null)",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"0",
+							""
+						],
+						"label": "Memory",
+						"prefix": "",
+						"suffix": "",
+						"base": "2",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "line",
+				"colors": [
+					{
+						"id": "a7a38809-10a1-4e4d-a99a-fc05d676d375",
+						"type": "scale",
+						"hex": "#FDC44F",
+						"name": "Cthulhu",
+						"value": "0"
+					},
+					{
+						"id": "3dd1ce6c-e305-4a41-aa36-e3db28500dce",
+						"type": "scale",
+						"hex": "#007C76",
+						"name": "Cthulhu",
+						"value": "0"
+					},
+					{
+						"id": "10688960-fcdc-4413-aa60-4f494e2cfea3",
+						"type": "scale",
+						"hex": "#8983FF",
+						"name": "Cthulhu",
+						"value": "0"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"note": "To enable this graph, you will need to configure the [Telegraf Docker Input plugin](https://github.com/influxdata/telegraf/tree/master/plugins/inputs/docker).",
+				"noteVisibility": "showWhenNoData",
+				"links": {
+					"self": "/chronograf/v1/dashboards/6/cells/d1e12f60-e657-4bd8-b946-17df89447779"
+				}
+			},
+			{
+				"i": "7bc26455-5671-40f1-af60-83afe05bb2a0",
+				"x": 0,
+				"y": 12,
+				"w": 12,
+				"h": 2,
+				"name": "Filesystem usage",
+				"queries": [
+					{
+						"query": "SELECT \"used_percent\" FROM \"vm_metrics\".\"autogen\".\"disk_vm\" WHERE time > :dashboardTime: AND \"host\" =~ :hosts: GROUP BY \"host\" FILL(null)",
+						"queryConfig": {
+							"database": "",
+							"measurement": "",
+							"retentionPolicy": "",
+							"fields": [],
+							"tags": {},
+							"groupBy": {
+								"time": "",
+								"tags": []
+							},
+							"areTagsAccepted": false,
+							"rawText": "SELECT \"used_percent\" FROM \"vm_metrics\".\"autogen\".\"disk_vm\" WHERE time > :dashboardTime: AND \"host\" =~ :hosts: GROUP BY \"host\" FILL(null)",
+							"range": null,
+							"shifts": null
+						},
+						"source": "",
+						"type": "influxql"
+					}
+				],
+				"axes": {
+					"x": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y": {
+						"bounds": [
+							"0",
+							"100"
+						],
+						"label": "percentage",
+						"prefix": "",
+						"suffix": " %",
+						"base": "10",
+						"scale": "linear"
+					},
+					"y2": {
+						"bounds": [
+							"",
+							""
+						],
+						"label": "",
+						"prefix": "",
+						"suffix": "",
+						"base": "10",
+						"scale": "linear"
+					}
+				},
+				"type": "line",
+				"colors": [
+					{
+						"id": "ec8bb6e2-21f0-4c3a-a328-98948911eaee",
+						"type": "scale",
+						"hex": "#FDC44F",
+						"name": "Cthulhu",
+						"value": "0"
+					},
+					{
+						"id": "d47ed0a3-bc9a-4b0e-ba3a-80f554650f34",
+						"type": "scale",
+						"hex": "#007C76",
+						"name": "Cthulhu",
+						"value": "0"
+					},
+					{
+						"id": "3061820e-3bdb-42c7-bce0-c639daf4e5a6",
+						"type": "scale",
+						"hex": "#8983FF",
+						"name": "Cthulhu",
+						"value": "0"
+					}
+				],
+				"legend": {},
+				"tableOptions": {
+					"verticalTimeAxis": true,
+					"sortBy": {
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					},
+					"wrapping": "truncate",
+					"fixFirstColumn": true
+				},
+				"fieldOptions": [
+					{
+						"internalName": "time",
+						"displayName": "",
+						"visible": true
+					}
+				],
+				"timeFormat": "MM/DD/YYYY HH:mm:ss",
+				"decimalPlaces": {
+					"isEnforced": true,
+					"digits": 2
+				},
+				"note": "To enable this graph, you will need to configure the [Telegraf Disk Input plugin](https://github.com/influxdata/telegraf/tree/master/plugins/inputs/disk).",
+				"noteVisibility": "showWhenNoData",
+				"links": {
+					"self": "/chronograf/v1/dashboards/6/cells/7bc26455-5671-40f1-af60-83afe05bb2a0"
+				}
+			}
+		],
+		"templates": [
+			{
+				"tempVar": ":hosts:",
+				"values": [
+					{
+						"value": "/.*vm-tmb-swarm-manager.*/",
+						"type": "map",
+						"selected": true,
+						"key": "tambore_managers"
+					},
+					{
+						"value": "/.*vm-tmb-swarm-worker.*/",
+						"type": "map",
+						"selected": false,
+						"key": "tambore_workers"
+					},
+					{
+						"value": "/.*aws-swarm-manager.*/",
+						"type": "map",
+						"selected": false,
+						"key": "aws_managers"
+					},
+					{
+						"value": "/.*aws-swarm-worker.*/",
+						"type": "map",
+						"selected": false,
+						"key": "aws_workers"
+					}
+				],
+				"id": "c5abe88a-1d34-43bc-b9ab-8dbcf6ee92e6",
+				"type": "map",
+				"label": "",
+				"query": {
+					"influxql": "",
+					"measurement": "",
+					"tagKey": "",
+					"fieldKey": ""
+				},
+				"links": {
+					"self": "/chronograf/v1/dashboards/6/templates/c5abe88a-1d34-43bc-b9ab-8dbcf6ee92e6"
+				}
+			}
+		],
+		"name": "Grafico: Docker cluster ",
+		"organization": "default",
+		"links": {
+			"self": "/chronograf/v1/dashboards/6",
+			"cells": "/chronograf/v1/dashboards/6/cells",
+			"templates": "/chronograf/v1/dashboards/6/templates"
+		}
+	}
+}
+
